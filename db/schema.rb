@@ -10,12 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_06_180802) do
+ActiveRecord::Schema.define(version: 2018_12_16_040852) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "orgnizer"
+    t.string "contact"
+    t.text "tournament_name"
+    t.integer "number_participent"
+    t.text "game_title"
   end
 
 end

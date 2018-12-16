@@ -1,21 +1,46 @@
 <!DOCTYPE html>
 <html lang="ja">
     <head>
-        <meta 
+
     </head>
     <body>
-        <h1>Home#top</h1>
-        <p>Find me in app/views/home/top.html.erb</p>
-        <ul>
-            <li>大会名<input type="text" placeholder="闘劇"></li>
-            <li>参加者(行毎に参加者名を入力して下さい)</li>
-            <textarea name="member" rows="32" cols="20"
-placeholder="ウメハラ
+        <div>
+            <ul>
+            <% @post.errors.full_messages.each do |m| %>
+                <%= m %>
+            <% end %>
+                <%= form_tag("/home/create") do %>
+                    <li>開催者:
+                        <input type="text" placeholder="MasuCatz" name="orgnizer" value="<%= @post.orgnizer %>">
+                    </li>
+                    <li>連絡先:
+                        <input type="url" placeholder="https://twitter.com/MasuCatz" name="contact" value="<%= @post.contact %>">
+                    </li>
+                    <li>大会名:
+                        <input type="text" placeholder="闘劇" name="content" value="<%= @post.content %>">
+                    </li>
+                    <li>参加者(行毎に参加者名を入力して下さい)
+                        <br>    
+                            <textarea rows="32" cols="20"
+                                placeholder="ウメハラ
 ときど
 マゴ"
-            ></textarea>
-            <li>ゲームタイトル<input type="text" placeholder="マリオブラザーズ"</li>
-        </ul>
-        
+                            ></textarea>
+                        </br>
+                    </li>                    
+                    <li>
+                        <p>ゲームタイトル</p>
+                            <select name="game_title">
+                                <option value="" selected>選択して下さい</option>
+                                <option value="guilty" <%= "selected" if @post.game_title == "guilty"%>>Guilty Gear Xrd Rev2</option>
+                                <option value="monja" <%= "selected" if @post.game_title == "monja"%>>Street Fighter 5</option>
+                                <option value="bbtag" <%= "selected" if @post.game_title == "bbtag"%> >BLAZBLUE CROSS TAG BATTLE</option>
+                                <option value="jenga" <%= "selected" if @post.game_title == "jenga"%>>ジェンガ</option>
+                            </select>
+                    </li>
+                    <input type="submit" value="生成！">
+                <% end %>
+            </ul>
+        </div>
     </body>
 </html>

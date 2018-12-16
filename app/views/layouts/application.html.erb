@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>CreateTournamentApp</title>
     <%= csrf_meta_tags %>
@@ -12,7 +12,16 @@
   <body>
     <ul>
       <li>トップページ(Application.html)</li>
+      <div class="flash">
+        <% if flash[:notice] %>
+          <%= flash[:notice]  %>
+        <% end %>
+      </div>
     </ul>
+    <div>
+      <%= link_to("作成ページ","/home/top")%>
+      <%= link_to("大会予定ページ","/home/plan") %>
+    </div>
     <%= yield %>
   </body>
 </html>
