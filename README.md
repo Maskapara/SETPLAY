@@ -1,28 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+格闘ゲーム向けの大会トーナメント表作成ツールです(開発中)
 
-Things you may want to cover:
-
-* Ruby version
+環境構成は以下
+* Ruby version  
 2.5.3
 
-* Rails version
-5.2.0
+* Rails version  
+5.2.2
 
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* DB  
+Develop:SQLite3  
+Product:PostgreSQL
