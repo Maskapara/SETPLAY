@@ -1,0 +1,16 @@
+<p>新規アカウント作成ページ</p>
+<% if @error_message %>
+    <%= @error_message %>
+<% end %>
+<%= form_tag("/account") do %>
+    <div>
+        <p>アカウント名</p>
+        <input name="name" type="text" value="<%= @name %>">
+        <p>メールアドレス</p>
+        <input name="email" type="text" value="<%= @email %>">
+        <p>パスワード</p>
+        <input name="password" type="password" value="<%= @password %>">
+    </div>
+    <br>
+    <input type="submit" value="アカウント作成">
+<% end %>

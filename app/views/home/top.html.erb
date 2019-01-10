@@ -4,6 +4,7 @@
 
     </head>
     <body>
+        <% if session[:user_id] %>
         <div>
             <ul>
             <% @post.errors.full_messages.each do |m| %>
@@ -42,5 +43,6 @@
                 <% end %>
             </ul>
         </div>
+        <% end %>
     </body>
 </html>

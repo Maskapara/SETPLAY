@@ -21,4 +21,34 @@ class HomeController < ApplicationController
       render("/home/top")
     end
   end
+
+  def login
+    @user = User.find_by(email: params[:email])
+    
+    # ログインしている場合
+    if @user && @user.authenticate(params[:password])
+      @error_message = nil
+      session[:user_id] = @user.id
+      flash[:notice] = "ログインしました"
+      redirect_to("/home/plan")
+    else
+      @error_message = "メールアドレスまたはパスワードが間違っています"
+      @email = params[:email]
+      @password = params[:password]
+      render("/home/login_form")
+    end
+  end
+
+  def logout
+    session[:user_id] = nil
+    flash[:notice] = "ログアウトしました"
+    redirect_to("/login")
+  end
+
+  def A_create
+    @user = User.new(name: params[:name],
+                     email: params[:email],
+                     password: params[:password])
+  end
+
 end
