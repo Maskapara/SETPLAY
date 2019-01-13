@@ -16,8 +16,7 @@ class HomeController < ApplicationController
   end
 
   def create
-
-    @post = Post.new(orgnizer: params[:orgnizer], contact: params[:contact], content: params[:content], game_title: params[:game_title])
+    @post = Post.new(orgnizer: params[:orgnizer], contact: params[:contact], content: params[:content],game_title: params[:game_title])
     if @post.save
       flash[:notice] = "大会ページを生成しました"
       redirect_to("/home/plan")
@@ -70,6 +69,35 @@ class HomeController < ApplicationController
       redirect_to("/home/top")
     end
 
+  end
+
+  def delete
+    @post = Post.find_by(id: params[:id])
+    if @post
+      flash[:notice] = "#{@post.content}の大会ページを削除しました"
+      @post.destroy
+    end
+    redirect_to("/home/plan")
+  end
+
+  def edit
+    @post = Post.find_by(id: params[:id])
+  end
+
+  def edit_post
+    @post = Post.find_by(id: params[:id])
+    @post.orgnizer = params[:orgnizer]
+    @post.contact = params[:contact]
+    @post.content = params[:content]
+    @post.game_title = params[:game_title]
+
+    if @post.save
+      flash[:notice] = "#{@post.content}の大会ページを編集しました"
+      redirect_to("/home/plan")
+    else
+      flash[:notice] = "#{@post.content}の大会ページの編集に失敗しました"
+      render("/home/top")
+    end
   end
 
 end

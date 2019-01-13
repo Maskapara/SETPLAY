@@ -10,7 +10,7 @@
             <% @post.errors.full_messages.each do |m| %>
                 <%= m %>
             <% end %>
-                <%= form_tag("/home/create") do %>
+                <%= form_tag("/home/edit_post/#{params[:id]}") do %>
                     <li>開催者:
                         <input type="text" name="orgnizer" value="<%= @current_user.name %>" readonly>
                     </li>
@@ -39,7 +39,7 @@
                                 <option value="jenga" <%= "selected" if @post.game_title == "jenga"%>>ジェンガ</option>
                             </select>
                     </li>
-                    <input type="submit" value="生成！">
+                    <input type="submit" value="編集！">
                 <% end %>
             </ul>
         </div>

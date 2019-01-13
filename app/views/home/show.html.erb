@@ -4,17 +4,18 @@
 
     </head>
     <body>
-        <h1>this is plan</h1>
-
+        <h1><%= @post.content %></h1>
+        <% if @current_user && (@post.orgnizer == @current_user.name) %>
+            <%= link_to("大会編集","/home/edit/#{params[:id]}") %>
+            <%= link_to("大会削除","/home/delete/#{params[:id]}",{method: :post}) %>
+        <% end %>
         <!-- DB内のデータ -->
             <div class="items">
                 <%= @post.id %>
                 <%= @post.orgnizer %>
-                <%= @post.contact%>
+                <%= @post.contact %>
                 <%= @post.content %>
-                <%= @post.number_participent %>
                 <%= @post.game_title %>
             </div>
-        
     </body>
 </html>

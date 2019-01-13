@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_01_10_174739) do
+ActiveRecord::Schema.define(version: 2019_01_13_140555) do
 
   create_table "posts", force: :cascade do |t|
     t.text "content"
@@ -18,8 +18,6 @@ ActiveRecord::Schema.define(version: 2019_01_10_174739) do
     t.datetime "updated_at", null: false
     t.string "orgnizer"
     t.string "contact"
-    t.text "tournament_name"
-    t.integer "number_participent"
     t.text "game_title"
   end
 

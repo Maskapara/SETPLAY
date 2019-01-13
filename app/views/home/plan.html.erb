@@ -4,8 +4,7 @@
 
     </head>
     <body>
-        <h1>this is plan</h1>
-
+        <h1>大会予定一覧</h1>
         <!-- DB内のデータ -->
         <% @posts.each do |p| %>
             <div class="items">
@@ -13,7 +12,6 @@
                 <%= p.orgnizer %>
                 <%= p.contact%>
                 <%= p.content %>
-                <%= p.number_participent %>
                 <%= p.game_title %>
             </div>
         <% end %>
