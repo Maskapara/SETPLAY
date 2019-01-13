@@ -12,7 +12,7 @@
             <% end %>
                 <%= form_tag("/home/create") do %>
                     <li>開催者:
-                        <input type="text" placeholder="MasuCatz" name="orgnizer" value="<%= @post.orgnizer %>">
+                        <input type="text" name="orgnizer" value="<%= @current_user.name %>">
                     </li>
                     <li>連絡先:
                         <input type="url" placeholder="https://twitter.com/MasuCatz" name="contact" value="<%= @post.contact %>">
