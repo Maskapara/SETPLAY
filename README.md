@@ -11,7 +11,7 @@
 * Rails version  
 5.2.2
 
-* サーバ
+* サーバ  
 Develop:CentOS7  
 Product:heroku
 
