@@ -1,48 +1,40 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-
-    </head>
-    <body>
-        <% if @current_user %>
-        <div>
-            <ul>
-            <% @post.errors.full_messages.each do |m| %>
-                <%= m %>
-            <% end %>
-                <%= form_tag("/home/edit_post/#{params[:id]}") do %>
-                    <li>開催者:
-                        <input type="text" name="orgnizer" value="<%= @current_user.name %>" readonly>
-                    </li>
-                    <li>連絡先:
-                        <input type="url" placeholder="https://twitter.com/MasuCatz" name="contact" value="<%= @post.contact %>">
-                    </li>
-                    <li>大会名:
-                        <input type="text" placeholder="闘劇" name="content" value="<%= @post.content %>">
-                    </li>
-                    <li>参加者(行毎に参加者名を入力して下さい)
-                        <br>    
-                            <textarea rows="32" cols="20"
-                                placeholder="ウメハラ
+<% if @current_user %>
+<div>
+    <ul>
+    <% @post.errors.full_messages.each do |m| %>
+        <%= m %>
+    <% end %>
+        <%= form_tag("/home/edit_post/#{params[:id]}") do %>
+            <li>開催者:
+                <input type="text" name="orgnizer" value="<%= @current_user.name %>" readonly>
+            </li>
+            <li>連絡先:
+                <input type="url" placeholder="https://twitter.com/MasuCatz" name="contact" value="<%= @post.contact %>">
+            </li>
+            <li>大会名:
+                <input type="text" placeholder="闘劇" name="content" value="<%= @post.content %>">
+            </li>
+            <li>参加者(行毎に参加者名を入力して下さい)
+                <br>    
+                    <textarea rows="32" cols="20"
+                        placeholder="ウメハラ
 ときど
 マゴ"
-                            ></textarea>
-                        </br>
-                    </li>                    
-                    <li>
-                        <p>ゲームタイトル</p>
-                            <select name="game_title">
-                                <option value="" selected>選択して下さい</option>
-                                <option value="guilty" <%= "selected" if @post.game_title == "guilty"%>>Guilty Gear Xrd Rev2</option>
-                                <option value="monja" <%= "selected" if @post.game_title == "monja"%>>Street Fighter 5</option>
-                                <option value="bbtag" <%= "selected" if @post.game_title == "bbtag"%> >BLAZBLUE CROSS TAG BATTLE</option>
-                                <option value="jenga" <%= "selected" if @post.game_title == "jenga"%>>ジェンガ</option>
-                            </select>
-                    </li>
-                    <input type="submit" value="編集！">
-                <% end %>
-            </ul>
-        </div>
+                    ></textarea>
+                </br>
+            </li>                    
+            <li>
+                <p>ゲームタイトル</p>
+                    <select name="game_title">
+                        <option value="" selected>選択して下さい</option>
+                        <option value="guilty" <%= "selected" if @post.game_title == "guilty"%>>Guilty Gear Xrd Rev2</option>
+                        <option value="monja" <%= "selected" if @post.game_title == "monja"%>>Street Fighter 5</option>
+                        <option value="bbtag" <%= "selected" if @post.game_title == "bbtag"%> >BLAZBLUE CROSS TAG BATTLE</option>
+                        <option value="jenga" <%= "selected" if @post.game_title == "jenga"%>>ジェンガ</option>
+                    </select>
+            </li>
+            <input type="submit" value="編集！">
         <% end %>
-    </body>
-</html>
+    </ul>
+</div>
+<% end %>

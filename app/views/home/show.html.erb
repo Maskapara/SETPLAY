@@ -1,21 +1,26 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-
-    </head>
-    <body>
-        <h1><%= @post.content %></h1>
-        <% if @current_user && (@post.orgnizer == @current_user.name) %>
-            <%= link_to("大会編集","/home/edit/#{params[:id]}") %>
-            <%= link_to("大会削除","/home/delete/#{params[:id]}",{method: :post}) %>
-        <% end %>
-        <!-- DB内のデータ -->
-            <div class="items">
-                <%= @post.id %>
-                <%= @post.orgnizer %>
-                <%= @post.contact %>
-                <%= @post.content %>
-                <%= @post.game_title %>
-            </div>
-    </body>
-</html>
+<h1><%= @post.content %></h1>
+<% if @current_user && (@post.orgnizer == @current_user.name) %>
+    <%= link_to("大会編集","/home/edit/#{params[:id]}") %>
+    <%= link_to("大会削除","/home/delete/#{params[:id]}",{method: :post}) %>
+<% end %>
+<!-- DB内のデータ -->
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>主催者</th>
+            <th>連絡先</th>
+            <th>大会名</th>
+            <th>ゲームタイトル</th>
+        </tr>
+    </thead>
+    <tbody>
+        <div class="items">
+            <th><%= @post.id %></th>
+            <td><%= @post.orgnizer %></td>
+            <td><%= @post.contact %></td>
+            <td><%= @post.content %></td>
+            <td><%= @post.game_title %></td>
+        </div>
+    </tbody>
+</table>

@@ -1,20 +1,26 @@
-<!DOCTYPE html>
-<html lang="ja">
-    <head>
-
-    </head>
-    <body>
-        <h1>大会予定一覧</h1>
-        <!-- DB内のデータ -->
-        <% @posts.each do |p| %>
-            <div class="items">
-                <%= link_to(p.id,"/home/plan/#{p.id}") %>
-                <%= p.orgnizer %>
-                <%= p.contact%>
-                <%= p.content %>
-                <%= p.game_title %>
-            </div>
-        <% end %>
-        
-    </body>
-</html>
+<h1>大会予定一覧</h1>
+<!-- DB内のデータ -->
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>主催者</th>
+            <th>連絡先</th>
+            <th>大会名</th>
+            <th>ゲームタイトル</th>
+        </tr>
+    </thead>
+    <tbody>
+    <% @posts.each do |p| %>
+        <div class="items">
+            <tr>
+                <th><%= link_to(p.id,"/home/plan/#{p.id}") %></th>
+                <td><%= p.orgnizer %></td>
+                <td><%= p.contact%></td>
+                <td><%= p.content %></td>
+                <td><%= p.game_title %></td>
+            </tr>
+        </div>
+    <% end %>
+    </tbody>
+</table>
