@@ -1,4 +1,10 @@
+require 'make_tournament_pic'
+require 'hello'
+
 class HomeController < ApplicationController
+
+  include MakeTournament
+  include Hello
 
   before_action :authenticate_user,{only: [:create]}
   before_action :forbid_login_user,{only: [:A_create,:login]}
@@ -19,6 +25,10 @@ class HomeController < ApplicationController
     @post = Post.new(orgnizer: params[:orgnizer], contact: params[:contact], content: params[:content],game_title: params[:game_title])
     if @post.save
       flash[:notice] = "大会ページを生成しました"
+
+      # 引数に入力フォームの参加者数を代入するよう実装
+      make(64)
+
       redirect_to("/home/plan")
     else
       flash[:notice] = "失敗"

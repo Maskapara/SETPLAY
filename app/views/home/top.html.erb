@@ -1,9 +1,9 @@
 <% if @current_user %>
 <div>
     <ul>
-    <% @post.errors.full_messages.each do |m| %>
-        <%= m %>
-    <% end %>
+        <% @post.errors.full_messages.each do |m| %>
+            <%= m %>
+        <% end %>
         <%= form_tag("/home/create") do %>
             <li>開催者:
                 <input type="text" name="orgnizer" value="<%= @current_user.name %>" readonly>
@@ -22,7 +22,7 @@
 マゴ"
                     ></textarea>
                 </br>
-            </li>                    
+            </li>
             <li>
                 <p>ゲームタイトル</p>
                     <select name="game_title">
@@ -36,5 +36,6 @@
             <input type="submit" value="生成！">
         <% end %>
     </ul>
+    <script type="text/javascript"></script>
 </div>
 <% end %>
