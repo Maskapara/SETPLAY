@@ -3,11 +3,11 @@ require 'cairo'
 module MakeTournament
 
     # nは人数
-    def make(n)
+    def makeaaaaa
 
         format = Cairo::FORMAT_ARGB32
-        width = 2400
-        height = 1800
+        width = 1080
+        height = 720
 
         # トナメ表の各パラメータ
         t_h = height / 10
@@ -22,7 +22,7 @@ module MakeTournament
         margin_y = 100
 
         # 人数
-        # n = 64
+        n = 27
 
         # 線数
         vertical_line_number = (2 * n) - 1
@@ -31,7 +31,7 @@ module MakeTournament
         # タテ線構築
         for line in 1..vertical_line_number do
             
-            center_v = (width / 2)
+            center_v = width / 2
 
             # 何段目か
             stage = Math.log2(line).floor
@@ -44,14 +44,10 @@ module MakeTournament
 
             # 段に依存した間隔決定
             for interval in 1..stage do
-                center_v -= t_w / (2 ** interval).to_f
+                center_v -= t_w / (2 ** interval)
             end
 
             postion_x = center_v + (order - 1) * order_opponent
-
-            # プリントデバッグ
-            # puts "間隔は#{order_opponent}"
-            # puts "#{line}本目の位置は#{postion_x}"
 
             # タテ線構築
             context.move_to(postion_x,margin_y + stage * t_h)
@@ -68,8 +64,9 @@ module MakeTournament
         # 描画
         context.stroke
 
-        # ファイル名はユーザ名 + 大会名
-        surface.write_to_png("../../share/a.png")
+        surface.write_to_png("home/vagrant/rails/CreateTournamentApp/app/controllers/testmodule.png")
+        puts "描画テスト"
+        # surface.write_to_png("../pic_file/test.png")
     end
 
 end
